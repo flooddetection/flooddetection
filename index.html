@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface no-generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths">
+   <head>
+      <title> Flood detector </title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="description" content="CodedThemes">
+      <meta name="keywords" content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+      <meta name="author" content="CodedThemes">
+      <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">
+      <link rel="stylesheet" type="text/css" href="index.css">
+      
+   </head>
+   <body>
+      <div class="main-body">
+         <div class="page-wrapper">
+            <div class="page-body">
+               <div class="row">
+                  <div class="col-md-6 col-xl-3">
+                     <div class="card widget-card-1">
+                        <div class="card-block-small">
+                           <i class="icofont icofont-water-drop bg-c-blue card1-icon"></i>
+                           <span class="text-c-blue f-w-600">Humidity</span>
+                           <h4 id="humidity"></h4>
+                           <div>
+                              <span class="f-left m-t-10 text-muted">
+                              <i class="text-c-blue f-16 icofont icofont-warning m-r-10"></i>Average : 20
+                              </span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-6 col-xl-3">
+                     <div class="card widget-card-1">
+                        <div class="card-block-small">
+                           <i class="icofont icofont-celsius bg-c-pink card1-icon"></i>
+                           <span class="text-c-pink f-w-600">Temperature</span>
+                           <h4 id="temp"></h4>
+                           
+                           <div>
+                              <span class="f-left m-t-10 text-muted">
+                              <i class="text-c-pink f-16 icofont icofont-warning m-r-10"></i>Average : 100
+                           </div>
+                        </div>
+                     </div>
+                     
+                  </div>
+                  <div class="col-md-6 col-xl-3">
+                     <div class="card widget-card-1">
+                        <div class="card-block-small">
+                           <i class="icofont icofont-brand-alcatel bg-c-green card1-icon"></i>
+                           <span class="text-c-green f-w-600">Distance</span>
+                           <h4 id="dist"></h4>
+                           <div>
+                              <span class="f-left m-t-10 text-muted">
+                              <i class="text-c-green f-16 icofont icofont-warning m-r-10"></i>Average : 10
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-6 col-xl-3">
+                     <div class="card widget-card-1">
+                        <div class="card-block-small">
+                           <i class="icofont icofont-wave bg-c-yellow card1-icon"></i>
+                           <span class="text-c-yellow f-w-600">Float Sensor</span>
+                           <h4 id="flow"></h4>
+                           <div>
+                              <span class="f-left m-t-10 text-muted">
+                              <i class="text-c-yellow f-16 icofont icofont-warning m-r-10"></i>Average : False
+                              </span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  
+               </div>
+            </div>
+         </div>
+      </div>
+      <br>
+     
+      <script>
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(this.responseText);
+            document.getElementById("humidity").innerHTML = myArr[myArr.length-1]["Humidity"];
+            document.getElementById("temp").innerHTML = myArr[myArr.length-1]["Temperature"];
+            document.getElementById("dist").innerHTML = myArr[myArr.length-1]["Distance"];
+            document.getElementById("flow").innerHTML = ((myArr[myArr.length-1]["Flowmeter"]).toString()).toUpperCase();
+            console.log(myArr);
+            
+          }
+        };
+        xmlhttp.open("GET", "https://script.google.com/macros/s/AKfycbwHX3ih0sJKA-A36xeToC4chDHgXbr7sCzu1HviWSJNKKM4LsTe3qhMfg/exec", true);
+        xmlhttp.send();
+        </script>
+        <script src="https://kit.fontawesome.com/4666c5026d.js" crossorigin="anonymous"></script>
+   </body>
+</html>
