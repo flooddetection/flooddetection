@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<p id="humidity"></p>
+<br>
+<p id="temp"></p>
+<br>
+<p id="dist"></p>
+<br>
+<p id="flow"></p>
+<!-- <p id="humidity"></p> -->
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myArr = JSON.parse(this.responseText);
+    document.getElementById("humidity").innerHTML = myArr[myArr.length-1]["Humidity"];
+    document.getElementById("temp").innerHTML = myArr[myArr.length-1]["Temperature"];
+    document.getElementById("dist").innerHTML = myArr[myArr.length-1]["Distance"];
+    document.getElementById("flow").innerHTML = myArr[myArr.length-1]["Flowmeter"];
+    console.log(myArr);
+    
+  }
+};
+xmlhttp.open("GET", "https://script.google.com/macros/s/AKfycbwHX3ih0sJKA-A36xeToC4chDHgXbr7sCzu1HviWSJNKKM4LsTe3qhMfg/exec", true);
+xmlhttp.send();
+</script>
+
+
+
+</body>
+</html>
