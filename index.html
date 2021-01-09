@@ -1,6 +1,11 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 <body>
+    
 
 
 <p id="humidity"></p>
@@ -18,6 +23,7 @@ xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myArr = JSON.parse(this.responseText);
     document.getElementById("humidity").innerHTML = myArr[myArr.length-1]["Humidity"];
+
     document.getElementById("temp").innerHTML = myArr[myArr.length-1]["Temperature"];
     document.getElementById("dist").innerHTML = myArr[myArr.length-1]["Distance"];
     document.getElementById("flow").innerHTML = myArr[myArr.length-1]["Flowmeter"];
